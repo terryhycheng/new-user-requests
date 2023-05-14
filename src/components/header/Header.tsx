@@ -12,7 +12,7 @@ const Header = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <GitHubLogo data-cy="github-logo" className="w-10" />
+            <GitHubLogo data-cy="github-logo" className="w-10 fill-white" />
           </a>
         </div>
       </div>
