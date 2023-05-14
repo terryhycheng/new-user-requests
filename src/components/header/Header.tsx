@@ -1,3 +1,5 @@
+import { ReactComponent as GitHubLogo } from "../../assets/github.svg";
+
 const Header = () => {
   return (
     <>
@@ -10,12 +12,7 @@ const Header = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <img
-              data-cy="github-logo"
-              src="/github.svg"
-              className="w-10"
-              alt="github-logo"
-            />
+            <GitHubLogo data-cy="github-logo" className="w-10" />
           </a>
         </div>
       </div>
