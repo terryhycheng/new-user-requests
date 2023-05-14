@@ -8,5 +8,15 @@
     "startDate": "2023-06-01",
     "businessArea": "IT",
     "completed": false
+  },
+  {
+    "id": 2,
+    "firstName": "Terry",
+    "lastName": "Cheng",
+    "jobTitle": "Financial Manager",
+    "lineManager": "Steven Harper",
+    "startDate": "2023-06-01",
+    "businessArea": "Finance",
+    "completed": true
   }
 ]
