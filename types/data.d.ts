@@ -1,4 +1,4 @@
-interface Data {
+export interface Data {
   id: number;
   firstName: string;
   lastName: string;
@@ -6,4 +6,5 @@ interface Data {
   lineManager: string;
   startDate: string;
   businessArea: "IT" | "Finance" | "HR" | "Housing" | "Care";
+  completed: boolean;
 }
