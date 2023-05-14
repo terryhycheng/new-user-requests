@@ -6,12 +6,11 @@ function App() {
   return (
     <>
       <Header />
-      <h2>New Starter Requests</h2>
-      {/* ... */}
-      {/* New User Request Form */}
-      <RequestForm />
-      {/* New User Request List  */}
-      <RequestList />
+      <main className="mx-auto px-4 max-w-[1200px]">
+        <h2>New Starter Requests</h2>
+        <RequestForm />
+        <RequestList />
+      </main>
     </>
   );
 }
