@@ -1,11 +1,12 @@
 [
-    {
-        "id": 1,
-        "firstName": "Pobl",
-        "lastName": "Developer",
-        "lineManager": "Richard Griffiths",
-        "startDate": "2023-06-01",
-        "businessArea": "IT",
-        "completed": false
-    }
+  {
+    "id": 1,
+    "firstName": "Pobl",
+    "lastName": "Developer",
+    "jobTitle": "Web Developer",
+    "lineManager": "Richard Griffiths",
+    "startDate": "2023-06-01",
+    "businessArea": "IT",
+    "completed": false
+  }
 ]
