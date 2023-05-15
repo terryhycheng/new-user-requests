@@ -2,7 +2,8 @@ import RequestForm from "./RequestForm";
 
 describe("<RequestForm />", () => {
   it("renders", () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<RequestForm />);
+    const fakeFetchData = cy.stub().as("fetch-data");
+
+    cy.mount(<RequestForm fetchData={fakeFetchData} />);
   });
 });
