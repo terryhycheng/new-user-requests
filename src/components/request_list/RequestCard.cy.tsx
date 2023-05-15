@@ -13,14 +13,9 @@ describe("<RequestCard />", () => {
       businessArea: "IT",
       completed: false,
     };
-    const fakeHandleDelete = cy.stub().as("handle-delete");
-    const fakeHandleToggleStatus = cy.stub().as("handle-toggle-status");
-    cy.mount(
-      <RequestCard
-        data={fakeData}
-        handleDelete={fakeHandleDelete}
-        handleToggleStatus={fakeHandleToggleStatus}
-      />
-    );
+
+    const fakeFetchData = cy.stub().as("fetch-data");
+
+    cy.mount(<RequestCard data={fakeData} fetchData={fakeFetchData} />);
   });
 });

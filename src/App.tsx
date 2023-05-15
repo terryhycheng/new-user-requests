@@ -7,7 +7,9 @@ function App() {
     <>
       <Header />
       <main className="mx-auto px-4 max-w-[1200px]">
-        <h2>New Starter Requests</h2>
+        <h2 className="text-center text-2xl text-main font-bold my-10">
+          New Starter Requests
+        </h2>
         <RequestForm />
         <RequestList />
       </main>

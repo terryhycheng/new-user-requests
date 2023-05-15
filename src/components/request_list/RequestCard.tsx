@@ -2,14 +2,14 @@ import { ReactComponent as PersonLogo } from "../../assets/person.svg";
 import { ReactComponent as DateLogo } from "../../assets/date.svg";
 import { ReactComponent as TickLogo } from "../../assets/tick.svg";
 import { type Data } from "../../../types/data";
+import axios, { AxiosError } from "axios";
 
 interface Props {
   data: Data;
-  handleToggleStatus: (id: string) => void;
-  handleDelete: (id: string) => void;
+  fetchData: () => Promise<void>;
 }
 
-const RequestCard = ({ data, handleToggleStatus, handleDelete }: Props) => {
+const RequestCard = ({ data, fetchData }: Props) => {
   const {
     id,
     firstName,
@@ -21,6 +21,25 @@ const RequestCard = ({ data, handleToggleStatus, handleDelete }: Props) => {
     startDate,
   } = data;
   const fullName = `${firstName} ${lastName}`;
+
+  const handleToggleStatus = async () => {
+    const newData = { ...data, completed: !completed };
+    try {
+      await axios.put(`http://localhost:5050/staff/${id}`, newData);
+      await fetchData();
+    } catch (error) {
+      throw Error("Failed to change status: " + (error as AxiosError).message);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:5050/staff/${id}`);
+      await fetchData();
+    } catch (error) {
+      throw Error("Failed to delete record: " + (error as AxiosError).message);
+    }
+  };
 
   return (
     <div className="p-8 rounded-lg border flex flex-col gap-4 font-light">
@@ -55,15 +74,19 @@ const RequestCard = ({ data, handleToggleStatus, handleDelete }: Props) => {
       <div className="flex gap-4 flex-col lg:flex-row">
         <button
           type="button"
-          className="p-4 py-3 border flex-1 rounded-lg text-secondary border-secondary"
-          onClick={() => handleToggleStatus(id)}
+          className={`p-4 py-3 border flex-1 rounded-lg ${
+            completed
+              ? "text-gray-200 border-gray-200"
+              : "text-secondary border-secondary"
+          }`}
+          onClick={handleToggleStatus}
         >
-          Make as Completed
+          {completed ? "Undo" : "Make as Completed"}
         </button>
         <button
           type="button"
           className="p-4 py-3 border flex-1 rounded-lg text-error border-error"
-          onClick={() => handleDelete(id)}
+          onClick={handleDelete}
         >
           Delete
         </button>
