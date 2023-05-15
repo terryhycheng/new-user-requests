@@ -1,7 +1,7 @@
 {
   "staff": [
     {
-      "id": 1,
+      "id": "eece7a6c-af2d-4001-887c-b26764fa4803",
       "firstName": "Pobl",
       "lastName": "Developer",
       "jobTitle": "Web Developer",
@@ -11,7 +11,7 @@
       "completed": false
     },
     {
-      "id": 2,
+      "id": "8fd4cd9c-027d-4225-acf1-6f133b10cdd0",
       "firstName": "Terry",
       "lastName": "Cheng",
       "jobTitle": "Financial Manager",
