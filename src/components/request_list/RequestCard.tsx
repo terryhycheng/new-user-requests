@@ -5,8 +5,8 @@ import { type Data } from "../../../types/data";
 
 interface Props {
   data: Data;
-  handleToggleStatus: (id: number) => void;
-  handleDelete: (id: number) => void;
+  handleToggleStatus: (id: string) => void;
+  handleDelete: (id: string) => void;
 }
 
 const RequestCard = ({ data, handleToggleStatus, handleDelete }: Props) => {

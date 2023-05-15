@@ -1,24 +1,52 @@
 import RequestCard from "./RequestCard";
-import dataList from "../../data/data.json";
 import { type Data } from "../../../types/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios, { AxiosError } from "axios";
+
+const baseUrl = "http://localhost:5050/staff";
 
 const RequestList = () => {
-  const [data, setData] = useState(dataList.staff as Data[]);
+  const [data, setData] = useState<Data[]>([]);
 
-  const handleToggleStatus = async (id: number) => {
-    const newData = data.map((record) => {
-      if (record.id === id) {
-        record = { ...record, completed: !record.completed };
-      }
-      return record;
-    });
-    setData(newData);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get<Data[]>(baseUrl);
+      setData(res.data);
+    } catch (error) {
+      console.log("Failed to fetch data" + (error as AxiosError).message);
+    }
   };
 
-  const handleDelete = async (id: number) => {
-    const newData = data.filter((record) => record.id !== id);
-    setData(newData);
+  const handleToggleStatus = async (id: string) => {
+    const selected = data.filter((record) => record.id === id)[0];
+    if (!selected) {
+      console.error("Invalid ID. Please try again.");
+      return;
+    }
+    selected.completed = !selected.completed;
+    try {
+      await axios.put(`${baseUrl}/${id}`, selected);
+      await fetchData();
+    } catch (error) {
+      console.error(
+        "Failed to change status: " + (error as AxiosError).message
+      );
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    try {
+      await axios.delete(`${baseUrl}/${id}`);
+      await fetchData();
+    } catch (error) {
+      console.error(
+        "Failed to delete record: " + (error as AxiosError).message
+      );
+    }
   };
 
   return (
