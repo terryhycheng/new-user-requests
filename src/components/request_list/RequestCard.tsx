@@ -3,8 +3,15 @@ import { ReactComponent as DateLogo } from "../../assets/date.svg";
 import { ReactComponent as TickLogo } from "../../assets/tick.svg";
 import { type Data } from "../../../types/data";
 
-const RequestCard = (data: Data) => {
+interface Props {
+  data: Data;
+  handleToggleStatus: (id: number) => void;
+  handleDelete: (id: number) => void;
+}
+
+const RequestCard = ({ data, handleToggleStatus, handleDelete }: Props) => {
   const {
+    id,
     firstName,
     lastName,
     jobTitle,
@@ -49,12 +56,14 @@ const RequestCard = (data: Data) => {
         <button
           type="button"
           className="p-4 py-3 border flex-1 rounded-lg text-secondary border-secondary"
+          onClick={() => handleToggleStatus(id)}
         >
           Make as Completed
         </button>
         <button
           type="button"
           className="p-4 py-3 border flex-1 rounded-lg text-error border-error"
+          onClick={() => handleDelete(id)}
         >
           Delete
         </button>
