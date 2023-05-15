@@ -1,11 +1,24 @@
-[
+{
+  "staff": [
     {
-        "id": 1,
-        "firstName": "Pobl",
-        "lastName": "Developer",
-        "lineManager": "Richard Griffiths",
-        "startDate": "2023-06-01",
-        "businessArea": "IT",
-        "completed": false
+      "id": "eece7a6c-af2d-4001-887c-b26764fa4803",
+      "firstName": "Pobl",
+      "lastName": "Developer",
+      "jobTitle": "Web Developer",
+      "lineManager": "Richard Griffiths",
+      "startDate": "2023-06-01",
+      "businessArea": "IT",
+      "completed": false
+    },
+    {
+      "id": "8fd4cd9c-027d-4225-acf1-6f133b10cdd0",
+      "firstName": "Terry",
+      "lastName": "Cheng",
+      "jobTitle": "Financial Manager",
+      "lineManager": "Steven Harper",
+      "startDate": "2023-06-01",
+      "businessArea": "Finance",
+      "completed": true
     }
-]
+  ]
+}

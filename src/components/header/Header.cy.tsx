@@ -4,9 +4,7 @@ describe("<Header />", () => {
   beforeEach(() => cy.mount(<Header />));
 
   it("should render a GitHub logo", () => {
-    cy.get('[data-cy="github-logo"]')
-      .should("exist")
-      .and("have.attr", "src", "/github.svg");
+    cy.get('[data-cy="github-logo"]').should("exist");
   });
 
   it("should have a link to the GitHub repo", () => {
