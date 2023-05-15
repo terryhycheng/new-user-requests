@@ -4,7 +4,7 @@ import { type Data } from "../../../types/data";
 import { useState } from "react";
 
 const RequestList = () => {
-  const [data, setData] = useState(dataList as Data[]);
+  const [data, setData] = useState(dataList.staff as Data[]);
 
   const handleToggleStatus = async (id: number) => {
     const newData = data.map((record) => {
