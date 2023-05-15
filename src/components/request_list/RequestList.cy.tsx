@@ -1,8 +1,10 @@
+import { Data } from "../../../types/data";
 import RequestList from "./RequestList";
 
 describe("<RequestList />", () => {
   it("renders", () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<RequestList />);
+    const fakeData: Data[] = [];
+    const fakeFetchData = cy.stub().as("fetch-data");
+    cy.mount(<RequestList data={fakeData} fetchData={fakeFetchData} />);
   });
 });
