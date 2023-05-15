@@ -5,6 +5,6 @@ export interface Data {
   jobTitle: string;
   lineManager: string;
   startDate: string;
-  businessArea: "IT" | "Finance" | "HR" | "Housing" | "Care";
+  businessArea: string;
   completed: boolean;
 }

@@ -1,28 +1,14 @@
+import { Data } from "../../../types/data";
 import RequestCard from "./RequestCard";
-import { type Data } from "../../../types/data";
-import { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
 
-const baseUrl = "http://localhost:5050/staff";
+interface Props {
+  data: Data[];
+  fetchData: () => Promise<void>;
+}
 
-const RequestList = () => {
-  const [data, setData] = useState<Data[]>([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const res = await axios.get<Data[]>(baseUrl);
-      setData(res.data);
-    } catch (error) {
-      throw Error("Failed to fetch data" + (error as AxiosError).message);
-    }
-  };
-
+const RequestList = ({ data, fetchData }: Props) => {
   return (
-    <div className="grid gap-4 my-10">
+    <div className="grid gap-4 mb-10 flex-1">
       {data.map((data) => (
         <RequestCard key={data.id} data={data} fetchData={fetchData} />
       ))}
