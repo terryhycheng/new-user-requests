@@ -2,21 +2,29 @@ import { Data } from "../../../types/data";
 import RequestCard from "./RequestCard";
 
 describe("<RequestCard />", () => {
-  it("renders", () => {
+  beforeEach(() => {
     const fakeData: Data = {
-      id: "8fd4cd9c-027d-4225-acf1-6f133b10cdd0",
-      firstName: "",
-      lastName: "",
-      jobTitle: "",
-      lineManager: "",
-      startDate: "",
+      id: "123",
+      firstName: "Testing",
+      lastName: "Component",
+      jobTitle: "Cypress tester",
+      lineManager: "Terry Cheng",
+      startDate: "2023-05-16",
       businessArea: "IT",
       completed: false,
-      createdAt: 123,
+      createdAt: 12345,
     };
 
     const fakeSetRefresh = cy.stub().as("set-refresh");
 
     cy.mount(<RequestCard data={fakeData} setRefresh={fakeSetRefresh} />);
   });
+
+  it("should display all info correctly", () => {});
+
+  it("should handle toggle status", () => {});
+
+  it("should handle delete a request", () => {});
+
+  it("should throw errors when something goes wrong", () => {});
 });

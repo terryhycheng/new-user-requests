@@ -2,7 +2,7 @@ import Filters from "./Filters";
 import { Data } from "../../../types/data";
 
 describe("<Filters />", () => {
-  it("renders", () => {
+  beforeEach(() => {
     const fakeFields = ["testing", "cypress"];
     const fakeData: Data[] = [];
     const fakeSetRefresh = cy.stub().as("set-refresh");
@@ -16,4 +16,8 @@ describe("<Filters />", () => {
       />
     );
   });
+
+  it("should display 2 select input field", () => {});
+
+  it("should filter the data if one of the fields changes", () => {});
 });
