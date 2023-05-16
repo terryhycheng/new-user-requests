@@ -8,7 +8,8 @@
       "lineManager": "Richard Griffiths",
       "startDate": "2023-06-01",
       "businessArea": "IT",
-      "completed": false
+      "completed": false,
+      "createdAt": 1684267305410
     },
     {
       "id": "8fd4cd9c-027d-4225-acf1-6f133b10cdd0",
@@ -18,7 +19,8 @@
       "lineManager": "Steven Harper",
       "startDate": "2023-06-01",
       "businessArea": "Finance",
-      "completed": true
+      "completed": true,
+      "createdAt": 1684267305412
     }
   ]
 }

@@ -4,7 +4,7 @@ import RequestList from "./RequestList";
 describe("<RequestList />", () => {
   it("renders", () => {
     const fakeData: Data[] = [];
-    const fakeFetchData = cy.stub().as("fetch-data");
-    cy.mount(<RequestList data={fakeData} fetchData={fakeFetchData} />);
+    const fakeSetRefresh = cy.stub().as("set-refresh");
+    cy.mount(<RequestList data={fakeData} setRefresh={fakeSetRefresh} />);
   });
 });

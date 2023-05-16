@@ -12,10 +12,11 @@ describe("<RequestCard />", () => {
       startDate: "",
       businessArea: "IT",
       completed: false,
+      createdAt: 123,
     };
 
-    const fakeFetchData = cy.stub().as("fetch-data");
+    const fakeSetRefresh = cy.stub().as("set-refresh");
 
-    cy.mount(<RequestCard data={fakeData} fetchData={fakeFetchData} />);
+    cy.mount(<RequestCard data={fakeData} setRefresh={fakeSetRefresh} />);
   });
 });

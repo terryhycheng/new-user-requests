@@ -6,10 +6,10 @@ import axios, { AxiosError } from "axios";
 
 interface Props {
   data: Data;
-  fetchData: () => Promise<void>;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const RequestCard = ({ data, fetchData }: Props) => {
+const RequestCard = ({ data, setRefresh }: Props) => {
   const {
     id,
     firstName,
@@ -26,7 +26,7 @@ const RequestCard = ({ data, fetchData }: Props) => {
     const newData = { ...data, completed: !completed };
     try {
       await axios.put(`http://localhost:5050/staff/${id}`, newData);
-      await fetchData();
+      setRefresh((prev) => !prev);
     } catch (error) {
       throw Error("Failed to change status: " + (error as AxiosError).message);
     }
@@ -35,17 +35,17 @@ const RequestCard = ({ data, fetchData }: Props) => {
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:5050/staff/${id}`);
-      await fetchData();
+      setRefresh((prev) => !prev);
     } catch (error) {
       throw Error("Failed to delete record: " + (error as AxiosError).message);
     }
   };
 
   return (
-    <div className="p-8 rounded-lg border flex flex-col gap-4 font-light">
+    <div className="p-8 rounded-lg border flex flex-col gap-4 font-light h-full">
       <div className="flex justify-between">
         <div>
-          <h3 className="font-bold text-2xl capitalize">{fullName}</h3>
+          <h3 className="font-bold text-xl capitalize">{fullName}</h3>
           <p>{jobTitle}</p>
         </div>
         <div>
@@ -81,7 +81,7 @@ const RequestCard = ({ data, fetchData }: Props) => {
           }`}
           onClick={handleToggleStatus}
         >
-          {completed ? "Undo" : "Make as Completed"}
+          {completed ? "Undo" : "Mark as Completed"}
         </button>
         <button
           type="button"

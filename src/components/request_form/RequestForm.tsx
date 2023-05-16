@@ -3,10 +3,11 @@ import { type Data } from "../../../types/data";
 import axios, { AxiosError } from "axios";
 
 interface Props {
-  fetchData: () => Promise<void>;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+  fields: string[];
 }
 
-const RequestForm = ({ fetchData }: Props) => {
+const RequestForm = ({ setRefresh, fields }: Props) => {
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const jobTitleRef = useRef<HTMLInputElement>(null);
@@ -25,9 +26,10 @@ const RequestForm = ({ fetchData }: Props) => {
       startDate: startDatedRef.current!.value,
       businessArea: bussinessFieldRef.current!.value,
       completed: false,
+      createdAt: new Date().getTime(),
     };
     await saveToDataBase(data);
-    await fetchData();
+    setRefresh((prev) => !prev);
     clearFeilds();
   };
 
@@ -85,11 +87,11 @@ const RequestForm = ({ fetchData }: Props) => {
           <option value="" disabled>
             Please select bussiness field
           </option>
-          <option value="IT">IT</option>
-          <option value="Finance">Finance</option>
-          <option value="HR">HR</option>
-          <option value="Housing">Housing</option>
-          <option value="Care">Care</option>
+          {fields.map((field) => (
+            <option key={field} value={field}>
+              {field}
+            </option>
+          ))}
         </select>
         <div className="flex gap-2 items-center">
           <label htmlFor="startDate">Start Date</label>
