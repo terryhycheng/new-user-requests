@@ -7,4 +7,5 @@ export interface Data {
   startDate: string;
   businessArea: string;
   completed: boolean;
+  createdAt: number;
 }
