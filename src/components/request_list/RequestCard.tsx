@@ -53,12 +53,14 @@ const RequestCard = ({ data, setRefresh }: Props) => {
           </h3>
           <p data-cy="job-title">{jobTitle}</p>
         </div>
-        <p
-          data-cy="business-area"
-          className="rounded-full text-sm px-4 py-1 bg-[#F1F1F1]"
-        >
-          {businessArea}
-        </p>
+        <div>
+          <p
+            data-cy="business-area"
+            className="rounded-full text-sm px-4 py-1 bg-[#F1F1F1]"
+          >
+            {businessArea}
+          </p>
+        </div>
       </div>
       <hr className="my-2" />
       <div className="flex justify-between mb-4 flex-col lg:flex-row gap-2 lg:gap-0">

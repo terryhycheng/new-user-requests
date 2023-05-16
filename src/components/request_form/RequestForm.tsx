@@ -37,7 +37,7 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
     try {
       await axios.post("http://localhost:5050/staff", data);
     } catch (error) {
-      throw Error("Failed to add record" + (error as AxiosError).message);
+      console.log("Failed to add record: " + (error as AxiosError).message);
     }
   };
 
@@ -57,6 +57,7 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
         <input
           type="text"
           ref={firstNameRef}
+          data-cy="first-name-input"
           name="firstName"
           placeholder="First name*"
           required
@@ -64,6 +65,7 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
         <input
           type="text"
           ref={lastNameRef}
+          data-cy="last-name-input"
           name="lastName"
           placeholder="Last name*"
           required
@@ -71,6 +73,7 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
         <input
           type="text"
           ref={jobTitleRef}
+          data-cy="job-title-input"
           name="jobTitle"
           placeholder="Job title*"
           required
@@ -78,6 +81,7 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
         <input
           type="text"
           ref={lineManagerRef}
+          data-cy="line-manager-input"
           name="lineManager"
           placeholder="Line Manager*"
           required
@@ -85,6 +89,7 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
         <select
           name="bussinessField"
           ref={bussinessFieldRef}
+          data-cy="field-input"
           defaultValue=""
           className="flex-1"
           required
@@ -106,10 +111,12 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
             name="startDate"
             className="flex-1"
             required
+            data-cy="date-input"
           />
         </div>
         <input
           type="submit"
+          data-cy="submit-button"
           value="Add record"
           className="bg-main text-white p-3 rounded-md mt-4"
         />
