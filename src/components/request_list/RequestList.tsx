@@ -11,7 +11,9 @@ const RequestList = ({ data, setRefresh }: Props) => {
     <div className="grid gap-4 mb-10 flex-1 h-full">
       {!data.length && (
         <div className="border h-full p-4 rounded-lg min-h-[20vh] flex items-center justify-center">
-          <p className="text-center">There is no matched data</p>
+          <p className="text-center" data-cy="message">
+            There is no matched data
+          </p>
         </div>
       )}
       {!!data.length &&
