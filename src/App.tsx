@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Header />
-      <Filters fields={businessFields} data={data} />
+      <Filters fields={businessFields} data={data} setData={setData} />
       <main className="mx-auto px-4 max-w-[1200px]">
         <h2 className="text-center text-2xl text-main font-bold my-10">
           New Starter Requests
