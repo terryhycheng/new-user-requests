@@ -81,7 +81,7 @@ const RequestCard = ({ data, setRefresh }: Props) => {
           }`}
           onClick={handleToggleStatus}
         >
-          {completed ? "Undo" : "Make as Completed"}
+          {completed ? "Undo" : "Mark as Completed"}
         </button>
         <button
           type="button"
