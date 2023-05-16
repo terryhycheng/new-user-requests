@@ -55,7 +55,7 @@ const RequestCard = ({ data, setRefresh }: Props) => {
         </div>
       </div>
       <hr className="my-2" />
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between mb-4 flex-col lg:flex-row gap-2 lg:gap-0">
         <div className="flex gap-3 items-center">
           <PersonLogo className="fill-black" />
           <p>{lineManager}</p>
