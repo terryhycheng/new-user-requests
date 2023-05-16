@@ -45,7 +45,7 @@ const RequestCard = ({ data, fetchData }: Props) => {
     <div className="p-8 rounded-lg border flex flex-col gap-4 font-light">
       <div className="flex justify-between">
         <div>
-          <h3 className="font-bold text-2xl capitalize">{fullName}</h3>
+          <h3 className="font-bold text-xl capitalize">{fullName}</h3>
           <p>{jobTitle}</p>
         </div>
         <div>
