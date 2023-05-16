@@ -4,9 +4,10 @@ import axios, { AxiosError } from "axios";
 
 interface Props {
   fetchData: () => Promise<void>;
+  fields: string[];
 }
 
-const RequestForm = ({ fetchData }: Props) => {
+const RequestForm = ({ fetchData, fields }: Props) => {
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const jobTitleRef = useRef<HTMLInputElement>(null);
@@ -85,11 +86,11 @@ const RequestForm = ({ fetchData }: Props) => {
           <option value="" disabled>
             Please select bussiness field
           </option>
-          <option value="IT">IT</option>
-          <option value="Finance">Finance</option>
-          <option value="HR">HR</option>
-          <option value="Housing">Housing</option>
-          <option value="Care">Care</option>
+          {fields.map((field) => (
+            <option key={field} value={field}>
+              {field}
+            </option>
+          ))}
         </select>
         <div className="flex gap-2 items-center">
           <label htmlFor="startDate">Start Date</label>
