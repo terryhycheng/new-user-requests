@@ -1,29 +1,49 @@
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Data } from "../../../types/data";
 
 interface Props {
   fields: string[];
   data: Data[];
+  refresh: boolean;
   setFilterData: React.Dispatch<React.SetStateAction<Data[]>>;
 }
 
-const Filters = ({ fields, data, setFilterData }: Props) => {
+const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
   const fieldFilterRef = useRef<HTMLSelectElement>(null);
+  const statusFilterRef = useRef<HTMLSelectElement>(null);
 
-  const fieldFilterOnChangeHandler = () => {
+  const onChangeHandler = useCallback(() => {
+    const filteredData = fieldFilter(statusFilter(data));
+    setFilterData(filteredData);
+  }, [data, setFilterData]);
+
+  // Filter the data again when `refresh` changed
+  useEffect(() => {
+    onChangeHandler();
+  }, [refresh, onChangeHandler]);
+
+  const fieldFilter = (inputData: Data[]) => {
     const selected = fieldFilterRef.current?.value;
     if (!selected) {
-      setFilterData(data);
-      return;
+      return inputData;
     }
-    const filteredData = data.filter(
+    const filteredData = inputData.filter(
       (record) => record.businessArea === selected
     );
-    setFilterData(filteredData);
+    return filteredData;
   };
 
-  const statusFilterOnChangeHandler = () => {
-    console.log("status changed!");
+  const statusFilter = (inputData: Data[]) => {
+    const selected = statusFilterRef.current?.value;
+    if (selected === "") {
+      return inputData;
+    }
+    const option = selected === "completed" ? true : false;
+    const filteredData = inputData.filter(
+      (record) => record.completed === option
+    );
+
+    return filteredData;
   };
 
   return (
@@ -37,7 +57,7 @@ const Filters = ({ fields, data, setFilterData }: Props) => {
             defaultValue=""
             className="flex-1"
             ref={fieldFilterRef}
-            onChange={fieldFilterOnChangeHandler}
+            onChange={onChangeHandler}
           >
             <option value="" disabled>
               Please select field
@@ -53,7 +73,8 @@ const Filters = ({ fields, data, setFilterData }: Props) => {
           <select
             name="statusFilter"
             className="flex-1"
-            onChange={statusFilterOnChangeHandler}
+            onChange={onChangeHandler}
+            ref={statusFilterRef}
           >
             <option value="">All</option>
             <option value="completed">Completed</option>

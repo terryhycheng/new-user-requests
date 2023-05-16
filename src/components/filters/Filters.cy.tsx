@@ -10,6 +10,7 @@ describe("<Filters />", () => {
     cy.mount(
       <Filters
         fields={fakeFields}
+        refresh={true}
         data={fakeData}
         setFilterData={fakeSetRefresh}
       />

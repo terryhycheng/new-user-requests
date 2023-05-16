@@ -12,6 +12,8 @@ const businessFields = ["IT", "Finance", "HR", "Housing", "Care"];
 function App() {
   const [data, setData] = useState<Data[]>([]);
   const [filterData, setFilterData] = useState<Data[]>([]);
+
+  // a state to trigger data fetching & filtering
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
@@ -27,12 +29,14 @@ function App() {
       throw Error("Failed to fetch data" + (error as AxiosError).message);
     }
   };
+
   return (
     <div className="min-h-screen">
       <Header />
       <Filters
         fields={businessFields}
         data={data}
+        refresh={refresh}
         setFilterData={setFilterData}
       />
       <main className="mx-auto px-4 max-w-[1200px]">
