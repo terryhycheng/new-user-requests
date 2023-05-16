@@ -2,9 +2,9 @@ import RequestForm from "./RequestForm";
 
 describe("<RequestForm />", () => {
   it("renders", () => {
-    const fakeFetchData = cy.stub().as("fetch-data");
+    const fakeSetRefresh = cy.stub().as("set-refresh");
     const fakeFields = ["testing", "cypress"];
 
-    cy.mount(<RequestForm fetchData={fakeFetchData} fields={fakeFields} />);
+    cy.mount(<RequestForm setRefresh={fakeSetRefresh} fields={fakeFields} />);
   });
 });

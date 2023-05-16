@@ -3,11 +3,11 @@ import { type Data } from "../../../types/data";
 import axios, { AxiosError } from "axios";
 
 interface Props {
-  fetchData: () => Promise<void>;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
   fields: string[];
 }
 
-const RequestForm = ({ fetchData, fields }: Props) => {
+const RequestForm = ({ setRefresh, fields }: Props) => {
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const jobTitleRef = useRef<HTMLInputElement>(null);
@@ -26,9 +26,10 @@ const RequestForm = ({ fetchData, fields }: Props) => {
       startDate: startDatedRef.current!.value,
       businessArea: bussinessFieldRef.current!.value,
       completed: false,
+      createdAt: new Date().getTime(),
     };
     await saveToDataBase(data);
-    await fetchData();
+    setRefresh((prev) => !prev);
     clearFeilds();
   };
 

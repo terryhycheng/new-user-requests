@@ -5,10 +5,14 @@ describe("<Filters />", () => {
   it("renders", () => {
     const fakeFields = ["testing", "cypress"];
     const fakeData: Data[] = [];
-    const fakeSetData = cy.stub().as("set-data");
+    const fakeSetRefresh = cy.stub().as("set-refresh");
 
     cy.mount(
-      <Filters fields={fakeFields} data={fakeData} setData={fakeSetData} />
+      <Filters
+        fields={fakeFields}
+        data={fakeData}
+        setFilterData={fakeSetRefresh}
+      />
     );
   });
 });

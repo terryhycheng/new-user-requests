@@ -1,14 +1,25 @@
+import { useRef } from "react";
 import { Data } from "../../../types/data";
 
 interface Props {
   fields: string[];
   data: Data[];
-  setData: React.Dispatch<React.SetStateAction<Data[]>>;
+  setFilterData: React.Dispatch<React.SetStateAction<Data[]>>;
 }
 
-const Filters = ({ fields, data, setData }: Props) => {
+const Filters = ({ fields, data, setFilterData }: Props) => {
+  const fieldFilterRef = useRef<HTMLSelectElement>(null);
+
   const fieldFilterOnChangeHandler = () => {
-    console.log("field changed!");
+    const selected = fieldFilterRef.current?.value;
+    if (!selected) {
+      setFilterData(data);
+      return;
+    }
+    const filteredData = data.filter(
+      (record) => record.businessArea === selected
+    );
+    setFilterData(filteredData);
   };
 
   const statusFilterOnChangeHandler = () => {
@@ -25,11 +36,13 @@ const Filters = ({ fields, data, setData }: Props) => {
             name="fieldFilter"
             defaultValue=""
             className="flex-1"
+            ref={fieldFilterRef}
             onChange={fieldFilterOnChangeHandler}
           >
             <option value="" disabled>
               Please select field
             </option>
+            <option value="">All</option>
             {fields.map((field) => (
               <option key={field} value={field}>
                 {field}
