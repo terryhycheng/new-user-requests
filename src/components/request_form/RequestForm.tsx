@@ -58,34 +58,39 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
           type="text"
           ref={firstNameRef}
           name="firstName"
-          placeholder="First name"
+          placeholder="First name*"
+          required
         />
         <input
           type="text"
           ref={lastNameRef}
           name="lastName"
-          placeholder="Last name"
+          placeholder="Last name*"
+          required
         />
         <input
           type="text"
           ref={jobTitleRef}
           name="jobTitle"
-          placeholder="Job title"
+          placeholder="Job title*"
+          required
         />
         <input
           type="text"
           ref={lineManagerRef}
           name="lineManager"
-          placeholder="Line Manager"
+          placeholder="Line Manager*"
+          required
         />
         <select
           name="bussinessField"
           ref={bussinessFieldRef}
           defaultValue=""
           className="flex-1"
+          required
         >
           <option value="" disabled>
-            Please select bussiness field
+            Please select bussiness field*
           </option>
           {fields.map((field) => (
             <option key={field} value={field}>
@@ -94,12 +99,13 @@ const RequestForm = ({ setRefresh, fields }: Props) => {
           ))}
         </select>
         <div className="flex gap-2 items-center">
-          <label htmlFor="startDate">Start Date</label>
+          <label htmlFor="startDate">Start Date*</label>
           <input
             type="date"
             ref={startDatedRef}
             name="startDate"
             className="flex-1"
+            required
           />
         </div>
         <input
