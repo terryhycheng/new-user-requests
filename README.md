@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+<!-- PROJECT LOGO -->
+<div align="center">
+  <a href="https://github.com/terryhycheng/new-user-requests">
+    <img src="./public/pobl-logo.png" alt="Logo" width="120" height="auto">
+  </a>
 
-## Available Scripts
+<h3 align="center">Pobl Technical Test</h3>
+<p>A React App to handle new starter requests</p>
+</div>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Table of Contents](#table-of-contents)
+- [About the Project](#about-the-project)
+  - [Features](#features)
+  - [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+    - [Clone the project](#clone-the-project)
+    - [Install packages](#install-packages)
+  - [Start](#start)
+    - [Run Cypress Tests](#run-cypress-tests)
+    - [Run the app](#run-the-app)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
 
-### `npm test`
+## About the Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![privew](/public/preview.png)
 
-### `npm run build`
+This application was developed for `Pobl` to handle new starter requests. To ensure maintainability, it was built using the `TypeScript` development tool and the `Cypress` testing library, providing type safety and comprehensive test coverage.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For styling purposes, the application utilizes `TailwindCSS` to apply inline styles directly within the component files.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+As for backend, `json-server` is acting as a server with routes by reading `src/data/data.json` to handle backend logics in this project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Features
 
-### `npm run eject`
+- **Add New Requests**: Users can create new starter requests
+- **Change Request's Status**: User can toggle the request as `completed` or `incomplete`
+- **Remove Requests**: User can remove requests from the list
+- **Filtering**: User can filter requests by business area and status
+- **Responsive Layout**: The app can be viewed on both laptop and mobile
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project was built with the following tools:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [![React][react-shield]][react-url]
+- [![typescript][typescript-shield]][typescript-url]
+- [![tailwindcss][tailwindcss-shield]][tailwindcss-url]
+- [![Cypress][cypress-shield]][cypress-url]
 
-## Learn More
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- GETTING STARTED -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+This section shows you how to set up this project locally. First, get a local copy up and running follow these simple steps.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Prerequisites
 
-### Analyzing the Bundle Size
+You have to make sure that `npm` and `node` have been installed in your local machine before running the project. If not, follow the steps below.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- npm
 
-### Making a Progressive Web App
+  ```sh
+  npm install npm@latest -g
+  npm -v
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- nvm & node
 
-### Advanced Configuration
+  ```sh
+  # visit https://github.com/nvm-sh/nvm on how to install nvm
+  nvm install node
+  node -v
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Deployment
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Clone the project
 
-### `npm run build` fails to minify
+```bash
+  git clone hhttps://github.com/terryhycheng/new-user-requests.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Install packages
+
+```bash
+cd new-user-requests
+npm install
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Start
+
+#### Run Cypress Tests
+
+Before running the app, you can run the following to make sure all components are working as expected.
+
+```bash
+  npm run test
+```
+
+#### Run the app
+
+This project used `concurrently` to run both the frontend and `json-server` server in one terminal. Port `3005` and `5050` are the default ports.
+
+```bash
+  npm run start
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[typescript-shield]: https://img.shields.io/badge/Typescript-3178c6?style=for-the-badge&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/
+[react-shield]: https://img.shields.io/badge/reactjs-20232a?style=for-the-badge&logo=react&logoColor=61dafb
+[react-url]: https://reactjs.org/
+[cypress-shield]: https://img.shields.io/badge/cypress-007780?style=for-the-badge&logo=cypress&logoColor=white
+[cypress-url]: https://www.cypress.io/
+[tailwindcss-shield]: https://img.shields.io/badge/tailwindcss-0f172a?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8
+[tailwindcss-url]: https://tailwindcss.com/

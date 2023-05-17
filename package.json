@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start:server": "json-server --watch src/data/data.json --port 5050 ",
-    "start:frontend": "react-scripts start",
+    "start:frontend": "PORT=3005 react-scripts start",
     "build": "react-scripts build",
     "test": "cypress run --component",
     "eject": "react-scripts eject",
