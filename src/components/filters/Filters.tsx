@@ -35,7 +35,7 @@ const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
 
   const statusFilter = (inputData: Data[]) => {
     const selected = statusFilterRef.current?.value;
-    if (selected === "") {
+    if (!selected) {
       return inputData;
     }
     const option = selected === "completed" ? true : false;
@@ -48,12 +48,18 @@ const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
 
   return (
     <section className="border-b py-6 px-4">
-      <div className="max-w-[1200px] mx-auto flex items-center gap-8">
-        <h3 className="font-semibold text-lg">Filters</h3>
-        <div className="flex gap-4 flex-1">
+      <div className="max-w-[1200px] mx-auto flex items-center gap-8 flex-col lg:flex-row">
+        <h3 data-cy="title" className="font-semibold text-lg">
+          Filters
+        </h3>
+        <div className="flex gap-4 flex-1 flex-col lg:flex-row w-full">
           {/* Field Filter */}
+          <label htmlFor="fieldFilter" className="lg:hidden">
+            Business Area Filter
+          </label>
           <select
             name="fieldFilter"
+            data-cy="field-filter"
             defaultValue=""
             className="flex-1"
             ref={fieldFilterRef}
@@ -70,8 +76,12 @@ const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
             ))}
           </select>
           {/* Status Filter */}
+          <label htmlFor="statusFilter" className="lg:hidden">
+            Status Filter
+          </label>
           <select
             name="statusFilter"
+            data-cy="status-filter"
             className="flex-1"
             onChange={onChangeHandler}
             ref={statusFilterRef}

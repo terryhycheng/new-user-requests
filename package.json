@@ -11,6 +11,7 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "axios": "^1.4.0",
+    "concurrently": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -21,7 +22,7 @@
     "start:server": "json-server --watch src/data/data.json --port 5050 ",
     "start:frontend": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress run --component",
     "eject": "react-scripts eject",
     "start": "concurrently \"npm run start:server\" \"npm run start:frontend\""
   },
