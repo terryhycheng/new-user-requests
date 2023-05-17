@@ -93,7 +93,7 @@ You have to make sure that `npm` and `node` have been installed in your local ma
 #### Clone the project
 
 ```bash
-  git clone hhttps://github.com/terryhycheng/new-user-requests.git
+git clone https://github.com/terryhycheng/new-user-requests.git
 ```
 
 #### Install packages
