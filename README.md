@@ -25,8 +25,8 @@
     - [Clone the project](#clone-the-project)
     - [Install packages](#install-packages)
   - [Start](#start)
-    - [Run Cypress Tests](#run-cypress-tests)
     - [Run the app](#run-the-app)
+    - [Run Cypress Tests](#run-cypress-tests)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -107,20 +107,20 @@ npm install
 
 ### Start
 
-#### Run Cypress Tests
-
-Before running the app, you can run the following to make sure all components are working as expected.
-
-```bash
-  npm run test
-```
-
 #### Run the app
 
 This project used `concurrently` to run both the frontend and `json-server` server in one terminal. Port `3005` and `5050` are the default ports.
 
 ```bash
   npm run start
+```
+
+#### Run Cypress Tests
+
+After running the app, you can run the following to make sure all components are working as expected.
+
+```bash
+  npm run test
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
