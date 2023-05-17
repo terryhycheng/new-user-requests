@@ -49,7 +49,9 @@ const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
   return (
     <section className="border-b py-6 px-4">
       <div className="max-w-[1200px] mx-auto flex items-center gap-8 flex-col lg:flex-row">
-        <h3 className="font-semibold text-lg">Filters</h3>
+        <h3 data-cy="title" className="font-semibold text-lg">
+          Filters
+        </h3>
         <div className="flex gap-4 flex-1 flex-col lg:flex-row w-full">
           {/* Field Filter */}
           <label htmlFor="fieldFilter" className="lg:hidden">
@@ -57,6 +59,7 @@ const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
           </label>
           <select
             name="fieldFilter"
+            data-cy="field-filter"
             defaultValue=""
             className="flex-1"
             ref={fieldFilterRef}
@@ -78,6 +81,7 @@ const Filters = ({ fields, data, refresh, setFilterData }: Props) => {
           </label>
           <select
             name="statusFilter"
+            data-cy="status-filter"
             className="flex-1"
             onChange={onChangeHandler}
             ref={statusFilterRef}
